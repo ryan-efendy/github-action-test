@@ -1,19 +1,17 @@
-name: Shell Commands 
-
+name: Shell Commands
 on: [push, repository_dispatch]
-
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: echo a string
         run: echo "Hello World"
-      - name: multiline script 
+      - name: multiline script
         run: |
-           node -v 
-           npm -v
-           python --version
-      - name: python Command 
+          node -v 
+          npm -v
+          python --version
+      - name: python Command
         run: |
           import platform 
           print(platform.processor())
@@ -23,7 +21,7 @@ jobs:
     needs: ["run-shell-command"]
     steps:
       - name: Directory PowerShell
-        run: Get-Location 
-      - name: Directory Bash 
-        run: pwd 
-        shell: bash 
+        run: Get-Location
+      - name: Directory Bash
+        run: pwd
+        shell: bash
