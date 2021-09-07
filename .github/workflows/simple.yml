@@ -1,6 +1,6 @@
 name: Shell Commands 
 
-on: [push]
+on: [push, repository_dispatch]
 
 jobs:
   run-shell-command:
@@ -12,9 +12,9 @@ jobs:
         run: |
            node -v 
            npm -v
-           python -v
+           python --version
       - name: python Command 
         run: |
           import platform 
-          print platform.processor()
+          print(platform.processor())
         shell: python
