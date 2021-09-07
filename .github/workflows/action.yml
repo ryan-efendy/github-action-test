@@ -11,3 +11,19 @@ jobs:
           who-to-greet: 'Mona the Octocat'
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
+      - name: List Files 
+        run: |
+          pwd
+          ls -a
+          echo GITHUB_SHA: $GITHUB_SHA
+          echo GITHUB_REPOSITORY: $GITHUB_REPOSITORY
+          echo GITHUB_WORKSPACE: $GITHUB_WORKSPACE
+          echo GITHUB_TOKEN: "${{ github.token }}"
+          # git clone git@github:$GITHUB_REPOSITORY
+          # git checkout $GITHUB_SHA
+      - name: Checkout 
+        uses: actions/checkout@v1
+      - name: List Files After Checkout
+        run: |
+          pwd
+          ls -a
