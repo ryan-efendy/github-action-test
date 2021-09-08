@@ -1,0 +1,24 @@
+name: Paths-Filter-Test
+on: push
+jobs:
+  paths-filer-test:
+    name: paths filter test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            bar:
+              - 'bar/**'
+            baz:
+              - 'baz/**'
+      - name: foo test
+        run: echo "HELLO FOO"
+      - name: bar test
+        if: steps.filter.outputs.bar == 'true'
+        run: echo "HELLO BAR"
+      - name: baz test
+        if: steps.filter.outputs.baz == 'true'
+        run: echo "HELLO BAZ"
